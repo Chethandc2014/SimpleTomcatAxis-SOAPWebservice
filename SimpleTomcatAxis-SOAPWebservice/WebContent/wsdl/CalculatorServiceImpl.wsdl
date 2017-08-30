@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://calservice.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://calservice.com" xmlns:intf="http://calservice.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://calservice.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getSquare">
+    <complexType>
+     <sequence>
+      <element name="number" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSquareResponse">
+    <complexType>
+     <sequence>
+      <element name="getSquareReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getSquareResponse">
+
+      <wsdl:part element="impl:getSquareResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSquareRequest">
+
+      <wsdl:part element="impl:getSquare" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CalculatorServiceImpl">
+
+      <wsdl:operation name="getSquare">
+
+         <wsdl:input message="impl:getSquareRequest" name="getSquareRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getSquareResponse" name="getSquareResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CalculatorServiceImplSoapBinding" type="impl:CalculatorServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getSquare">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSquareRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSquareResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CalculatorServiceImplService">
+
+      <wsdl:port binding="impl:CalculatorServiceImplSoapBinding" name="CalculatorServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8090/myTestWebService/services/CalculatorServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
